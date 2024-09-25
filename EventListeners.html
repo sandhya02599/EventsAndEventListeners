@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventListeners</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        header {
+            background-color: #F86624;
+            color: #fff;
+        }
+
+        .nav-left {
+            font-weight: 800;
+            letter-spacing: 0.1rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            margin: 0 50px;
+            height: 70px;
+            font-size: 1.25rem;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        nav li {
+            float: left;
+            font-weight: 600;
+            letter-spacing: 0.1rem;
+        }
+
+        nav li {
+            display: block;
+            color: #fff;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            border-radius: 10px;
+        }
+
+        nav ul li:hover {
+            background-color: #1768AC;
+            border-radius: 10px;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            z-index: 1;
+            top: 70px;
+            left: 0;
+            background-color: #1768AC;
+            color: #fff;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+
+        .sidenav li {
+            padding: 6px 8px 6px 16px;
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+        }
+
+        .main {
+            margin-left: 200px;
+            padding: 20px;
+        }
+
+        .dark-theme:hover {
+            background-color: #1768AC;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .main {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .section {
+            background-color: #DEE7E7;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        .login-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 500px;
+        }
+
+        .login-modal input[type="text"],
+        .login-modal input[type="password"],
+        .login-modal button {
+            margin-bottom: 10px;
+            width: 90%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-top: 10px;
+        }
+
+        #closeBtn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: red;
+        }
+
+        #loginSubmit {
+            background-color: #1768AC;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        #loginSubmit:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div id="company" class="nav-left" onmouseenter="changeCompany()" onmouseout="normal()">
+                Company
+            </div>
+            <div class="nav-right">
+                <ul>
+                    <li class="revenue">Revenue</li>
+                    <li class="sales">Sales</li>
+                    <li class="customers">Customers</li>
+                    <li class="reports">Reports</li>
+                    <li class="settings">Settings</li>
+                </ul>
+            </div>
+            <div class="dark-theme" onclick="darkTheme()" ondblclick="lightTheme()">
+                Dark Theme
+            </div>
+            <div id="loginBtn">
+                Login
+            </div>
+            <button id="close">Close Sidebar</button>
+        </nav>
+    </header>
+    
+    <div class="login-modal" id="loginSection">
+        <h3 class="loginTitle">Login</h3>
+        <div id="closeBtn">close</div>
+        <input type="text" placeholder="Enter your name"><br>
+        <input type="password" placeholder="Enter your password"><br>
+        <button id="loginSubmit">Submit</button>
+    </div>
+
+    <div class="sidenav">
+        <ul>
+            <li>Dashboard</li>
+            <li class="revenue">Revenue</li>
+            <li class="sales">Sales</li>
+            <li class="customers">Customers</li>
+            <li class="reports">Reports</li>
+            <li class="meetings">Meetings</li>
+            <li class="events">Events</li>
+            <li class="settings">Settings</li>
+        </ul>
+    </div>
+
+    <div class="main">
+        <div class="section revenue" onmouseover="eleHover(this)" onmouseout="eleOut(this)">
+            <h2>Revenue</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <div class="section sales" onmouseover="eleHover(this)" onmouseout=" eleOut(this)">
+            <h2>Sales</h2>
+            <p>Ut euismod efficitur turpis, non tincidunt nibh volutpat sed.</p>
+        </div>
+        <div class="section customers" onmouseover="eleHover(this)" onmouseout=" eleOut(this)">
+            <h2>Customers</h2>
+            <p>Suspendisse semper ipsum eget neque malesuada auctor.</p>
+        </div>
+        <div class="section reports" onmouseover="eleHover(this)" onmouseout=" eleOut(this)">
+            <h2>Reports</h2>
+            <p>Morbi id feugiat mauris, at tempus mi.</p>
+        </div>
+        <div class="section meetings" onmouseover="eleHover(this)" onmouseout=" eleOut(this)">
+            <h2>Meetings</h2>
+            <p>Nulla facilisi. Vestibulum vitae eros nec lectus posuere ultricies.</p>
+        </div>
+        <div class="section events" onmouseover="eleHover(this)" onmouseout=" eleOut(this)">
+            <h2>Events</h2>
+            <p>Quisque eu massa a mauris ultricies dapibus non vitae nulla.</p>
+        </div>
+    </div>
+
+    <script>
+        const closeNav = document.getElementById("close");
+        const sideNavBar = document.querySelector(".sidenav");
+
+        closeNav.addEventListener('click', () => {
+            sideNavBar.classList.toggle("mango");
+        });
+
+        const darkTheme = function() {
+            document.querySelector("body").style.backgroundColor = "black";
+            document.querySelector(".dark-theme").textContent = "Light Theme";
+            document.querySelector("header").style.backgroundColor = "#2E282A";
+            document.querySelector(".sidenav").style.backgroundColor = "#808A9F";
+        }
+
+        const lightTheme = function() {
+            document.querySelector("body").style.backgroundColor = "white";
+            document.querySelector(".dark-theme").textContent = "Dark Theme";
+            document.querySelector("header").style.backgroundColor = "#F86624";
+            document.querySelector(".sidenav").style.backgroundColor = "#1768AC";
+        }
+
+        function eleHover(element) {
+            element.style.backgroundColor = "yellow";
+        }
+
+        function eleOut(item) {
+            item.style.backgroundColor = "#DEE7E7";
+        }
+
+        const changeCompany = function() {
+            document.querySelector("#company").textContent = "Sales Force";
+        };
+
+        const normal = function() {
+            document.querySelector("#company").textContent = "Company";
+        }
+
+        const loginButton = document.getElementById("loginBtn");
+        const loginModal = document.getElementById("loginSection");
+        const mainSection = document.querySelectorAll(".main .section");
+
+        loginButton.addEventListener("click", showLogin);
+
+        function showLogin() {
+            mainSection.forEach(function(item) {
+                item.style.display = "none";
+            });
+            loginModal.style.display = "block";
+        }
+
+        document.getElementById("closeBtn").addEventListener('click', hideLogin);
+
+        function hideLogin() {
+            mainSection.forEach(function(item) {
+                item.style.display = "block";
+            });
+            loginModal.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>

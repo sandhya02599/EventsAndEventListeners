@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <style>
+        .Main {
+            display: flex;
+            justify-content: center; 
+            align-items: center;    
+            padding: 20px;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+        }
+
+        .section {
+            flex: 1;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .section h2 {
+            margin-bottom: 10px;
+            font-size: 30px;
+            margin-left: 120px;
+        }
+
+        .section p {
+            font-size: 14px;
+            color: #666;
+            font-size: 17px;
+        }
+        .section:hover {
+            background-color: lightpink;
+        }
+    </style>
+</head>
+<body>
+    <div class="Main">
+        <div class="main">
+            <div class="section revenue" onmouseover="eleHover(this)" onmouseout="eleOut(this)">
+                <h2>Revenue</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ipsam, tempora enim, quisquam dolor molestiae similique nam tenetur vero numquam sint nisi inventore odit earum mollitia nostrum saepe quasi. Excepturi.</p>
+            </div>
+
+            <div class="section sales" onmouseover="eleHover(this)" onmouseout="eleOut(this)">
+                <h2>Sales</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ipsam, tempora enim, quisquam dolor molestiae similique nam tenetur vero numquam sint nisi inventore odit earum mollitia nostrum saepe quasi. Excepturi.</p>
+            </div>
+
+            <div class="section customers" onmouseover="eleHover(this)" onmouseout="eleOut(this)">
+                <h2>Customers</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ipsam, tempora enim, quisquam dolor molestiae similique nam tenetur vero numquam sint nisi inventore odit earum mollitia nostrum saepe quasi. Excepturi.</p>
+            </div>
+
+            <div class="section reports" onmouseover="eleHover(this)" onmouseout="eleOut(this)">
+                <h2>Reports</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ipsam, tempora enim, quisquam dolor molestiae similique nam tenetur vero numquam sint nisi inventore odit earum mollitia nostrum saepe quasi. Excepturi.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function eleHover(element){
+            element.style.backgroundColor="Yellow";
+        }
+        function eleOut(item){
+            item.style.backgroundColor="#DEE7E7"
+        }
+    </script>
+</body>
+</html>
